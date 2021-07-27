@@ -1,0 +1,73 @@
+# The DL_POLY Quantum v1.0 README File
+
+DL_POLY Classic is modified by Shakib Theory Group, written by Mohammad R. Momeni and Farnaz A. Shakib, to DL_POLY Quantum v1.0. Some of most significant modifications in DL_POLY quantum v1.0 are as following:
+
+1. Implementing Nose-Hoover Chain (NHC) thermostat for classical simulations in canonical ensemble based on Suzuki-Yoshida scheme.
+
+2. Implementing NHC thermostat/barostat for isothermal-isobaric ensemble through Martyna-Tobias-Klein (MTK) algorithm.  
+
+3. Implementing the four-site flexible quantum water potential model qTIP4P/f.
+
+4. Implementing a 12-6 Lennard-Jones as external potential for confinement simulations. 
+
+A manual will be supplied in near future, implementation of non-adiabatic dynamics methods are underway. For suggestions, feedbacks and questions please contact Dr. Farnaz Shakib at shakib@njit.edu. 
+
+## quick install
+
+cd source
+make clean
+make dlpoly
+ 
+
+# The DL_POLY Classic README File
+
+DL_POLY Classic is a general purpose (parallel and serial)
+molecular dynamics simulation package derived from the package
+known as DL_POLY_2 (Version 20) which was originally written by
+W. Smith and T.R. Forester at Daresbury Laboratory to support the
+CCP5 project `Computer Simulation of Condensed Phases'. The terms
+under which this package is made available are given in the
+DL_POLY Classic Licence supplied with the source code.
+
+The availability of this package carries no obligation on the
+part of the authors, CCP5, the suppliers or laboratory of
+origin. In particular, no support or advice is offered. Users of
+the package are referred to the User Manual supplied.
+
+DL_POLY Classic is distinct from the packages DL_POLY_3 or
+DL_POLY_4, which are available from Daresbury Laboratory under
+DIFFERENT licence terms. Permissions granted under the DL_POLY
+Classic Licence DO NOT extend to DL_POLY_3 or DL_POLY_4.
+
+## quick install
+
+```sh
+cd source
+ln -s ../build/MakePAR Makefile
+make dlpoly
+```
+
+if you see the following issue
+
+```sh
+mpif90 -c -O3 metafreeze_module.f
+metafreeze_module.f:297:49:
+
+  297 |         if ( commsize > 1 ) call gdsum(eng_loc,1,buff1)
+      |                                                 1
+......
+ 3075 |       call gdsum(zeta_global(1),ntet,buff1(1:ntet))
+      |                                     2            
+Error: Rank mismatch between actual argument at (1) and actual argument at (2) (rank-1 and scalar)
+
+```
+
+
+change the make command to
+
+``sh
+make dlpoly FFLAGS="-c -O3 -fallow-argument-mismatch"
+```
+
+
+ 
