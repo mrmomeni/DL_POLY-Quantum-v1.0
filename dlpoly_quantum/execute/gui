@@ -1,4 +1,0 @@
-#
-# Simple script to start up DL_POLY java GUI
-#
-java -jar ../java/GUI.jar $1
